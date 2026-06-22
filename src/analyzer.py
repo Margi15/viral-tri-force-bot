@@ -26,7 +26,7 @@ Responde en JSON con exactamente estos campos:
 Solo responde con el JSON, sin texto adicional."""
 
     message = client.messages.create(
-        model="claude-3-5-sonnet-20241022",
+        model="claude-sonnet-4-6",
         max_tokens=500,
         messages=[{"role": "user", "content": prompt}]
     )
