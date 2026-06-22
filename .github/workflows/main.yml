@@ -2,32 +2,44 @@ name: Viral Tri-Force Bot
 
 on:
   schedule:
-    - cron: '0 9 * * *'   # 9am UTC
-    - cron: '0 17 * * *'  # 5pm UTC
-    - cron: '0 1 * * *'   # 1am UTC
+    - cron: '0 9 * * *'
+    - cron: '0 17 * * *'
+    - cron: '0 1 * * *'
   workflow_dispatch:
 
 jobs:
-  run-bot:
+  viral-content:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
-          cache: 'pip'
+          python-version: '3.10'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install -r requirements.txt
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
 
-      - name: Run Viral Tri-Force Bot
+      - name: Run Viral Bot
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           FACEBOOK_PAGE_TOKEN: ${{ secrets.FACEBOOK_PAGE_TOKEN }}
-          FACEBOOK_PAGE_ID: "122166413522685195"
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
         run: python src/main.py
+
+      - name: Commit and push results
+        run: |
+          git config --global user.name 'Viral Bot'
+          git config --global user.email 'bot@viral.com'
+          git add output/ || true
+          git commit -m "New viral content generated" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
