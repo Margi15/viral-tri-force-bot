@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+*.mp4
+*.mp3
+*.jpg
+*.png
+/tmp/
+.DS_Store
