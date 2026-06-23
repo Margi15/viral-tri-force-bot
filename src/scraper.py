@@ -4,6 +4,12 @@ import os
 from googleapiclient.discovery import build
 from datetime import datetime, timedelta
 
+MESES = {
+    1: "enero", 2: "febrero", 3: "marzo", 4: "abril",
+    5: "mayo", 6: "junio", 7: "julio", 8: "agosto",
+    9: "septiembre", 10: "octubre", 11: "noviembre", 12: "diciembre"
+}
+
 def get_viral_videos(max_results=5):
     api_key = os.environ.get("YOUTUBE_API_KEY")
     if not api_key:
@@ -14,12 +20,17 @@ def get_viral_videos(max_results=5):
     # Ultimos 3 dias para contenido MAS reciente y viral
     published_after = (datetime.utcnow() - timedelta(days=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
 
+    # Fecha de hoy para queries historicas del dia (mundial, no solo Mexico)
+    hoy = datetime.utcnow()
+    dia = hoy.day
+    mes = MESES[hoy.month]
+
     queries = [
-        "historia de mexico viral",
-        "historia latinoamerica impactante",
-        "dato historico sorprendente espanol",
-        "historia antigua secretos revelados",
-        "civilizaciones antiguas misterios",
+        f"un dia como hoy {dia} de {mes} en la historia",
+        f"que paso el {dia} de {mes} evento historico mundial",
+        f"{dia} de {mes} historia mundo impactante",
+        f"evento historico mundial {dia} {mes}",
+        f"historia hoy {dia} {mes} dato sorprendente",
     ]
 
     all_videos = []
@@ -51,23 +62,27 @@ def get_viral_videos(max_results=5):
                     id=video_id
                 ).execute()
 
-                if stats_resp["items"]:
-                    stats = stats_resp["items"][0]["statistics"]
-                    view_count = int(stats.get("viewCount", 0))
-                    if view_count >= 50000:
-                        all_videos.append({
-                            "video_id": video_id,
-                            "title": title,
-                            "description": desc[:500],
-                            "view_count": view_count,
-                            "url": f"https://www.youtube.com/watch?v={video_id}",
-                        })
-                        print(f"  [{view_count:,} vistas] {title[:60]}")
+                if not stats_resp.get("items"):
+                    continue
+
+                stats = stats_resp["items"][0]["statistics"]
+                view_count = int(stats.get("viewCount", 0))
+
+                if view_count >= 50000:
+                    all_videos.append({
+                        "video_id": video_id,
+                        "title": title,
+                        "description": desc,
+                        "view_count": view_count,
+                        "query_used": query,
+                    })
+                    print(f"  [{view_count:,} vistas] {title[:60]}")
+
         except Exception as e:
             print(f"  Error en query '{query}': {e}")
             continue
 
-    # Sort by views - los mas virales primero
+    # Ordenar por vistas descendente
     all_videos.sort(key=lambda x: x["view_count"], reverse=True)
-    print(f"  Encontrados {len(all_videos)} videos virales (ultimos 3 dias, >50k vistas)")
+    print(f"Encontrados {len(all_videos)} videos virales (ultimos 3 dias, >50k vistas)")
     return all_videos[:max_results]
