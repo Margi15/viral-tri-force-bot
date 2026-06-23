@@ -11,22 +11,41 @@ def create_content(video, analysis):
     sorpresa = analysis.get("elemento_sorpresa", "")
     emocion = analysis.get("emocion_dominante", "curiosidad")
 
+    # Buscar informacion real en Wikipedia
+    wiki_extract = ""
+    wiki_image_url = None
+    try:
+        from wikipedia_search import search_wikipedia
+        wiki_data = search_wikipedia(tema)
+        if wiki_data:
+            wiki_extract = wiki_data.get("extract", "")
+            wiki_image_url = wiki_data.get("image_url")
+            print(f"  Wikipedia: '{wiki_data.get('title')}' ({len(wiki_extract)} chars)")
+    except Exception as e:
+        print(f"  Wikipedia no disponible: {e}")
+
+    # Agregar contexto de Wikipedia al prompt si esta disponible
+    wiki_section = ""
+    if wiki_extract:
+        wiki_section = f"\nContexto historico real de Wikipedia:\n{wiki_extract}\n"
+
     prompt = f"""Crea contenido viral de historia en espanol para redes sociales.
 
 Tema: {tema}
 Gancho viral: {gancho}
 Dato sorpresa: {sorpresa}
-Emocion: {emocion}
+Emocion: {emocion}{wiki_section}
 
 Genera:
 1. SCRIPT_SHORTS: Guion para YouTube Short de 45 segundos (maximo 120 palabras).
-   Comienza con una pregunta o dato impactante. Termina con "Sigueme para mas historia".
+Comienza con una pregunta o dato impactante. Termina con "Sigueme para mas historia".
+Usa detalles reales del contexto historico si estan disponibles.
 
 2. FACEBOOK_POST: Post de Facebook de 150-200 palabras con emojis, el dato sorpresa
-   y llamada a la accion "Comenta SI si quieres saber mas".
+y llamada a la accion "Comenta SI si quieres saber mas".
 
 3. INSTAGRAM_CAPTION: Caption de Instagram de 80-100 palabras con hashtags relevantes
-   al final (#historia #historiaviral #cultura).
+al final (#historia #historiaviral #cultura).
 
 Responde EXACTAMENTE en este formato:
 ---SCRIPT_SHORTS---
@@ -65,6 +84,8 @@ Responde EXACTAMENTE en este formato:
 
     parts["title"] = tema
     parts["video_source"] = video
+    if wiki_image_url:
+        parts["wiki_image_url"] = wiki_image_url
 
     print(f"  Script: {len(parts['script'].split())} palabras")
     return parts
