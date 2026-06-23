@@ -6,12 +6,14 @@ import anthropic
 def analyze_video(video):
     client = anthropic.Anthropic(api_key=os.environ.get("ANTHROPIC_API_KEY"))
 
+    video_url = f"https://www.youtube.com/watch?v={video['video_id']}"
+
     prompt = f"""Analiza este video viral de historia y extrae su formula de exito.
 
 Titulo: {video['title']}
 Descripcion: {video['description']}
 Vistas: {video['view_count']:,}
-URL: {video['url']}
+URL: {video_url}
 
 Responde en JSON con exactamente estos campos:
 {{
