@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-06-23T10:35:10.078061",
+  "results": {
+    "youtube": {
+      "success": true,
+      "video_id": "ttNKlhNgVbs",
+      "url": "https://www.youtube.com/shorts/ttNKlhNgVbs"
+    },
+    "facebook": {
+      "success": false,
+      "error": "(#200) If posting to a group, requires app being installed in the group, and \\\n          either publish_to_groups permission with user token, or both pages_read_engagement \\\n          and pages_manage_posts permission with page token; If posting to a page, \\\n          requires both pages_read_engagement and pages_manage_posts as an admin with \\\n          sufficient administrative permission"
+    },
+    "instagram": {
+      "success": false,
+      "error": "No Instagram Business Account vinculado"
+    }
+  },
+  "content": {
+    "script": "¿Sabías que tus bisabuelos vivieron algo que cambió México para siempre? 🇲🇽\n\nImagina viajar en el tiempo y conocer a tus abuelos cuando eran jóvenes... en plena Revolución Mexicana.\n\nEn 1910, millones de familias fueron separadas, desplazadas, obligadas a reconstruir su vida desde cero.\n\nEsas personas no eran personajes de libro... eran TUS abuelos. Tu sangre. Tu historia.\n\nCada arruga en su cara guardaba batallas que nunca te contaron.\n\nLa próxima vez que veas una foto antigua de tu familia... pregúntate: ¿qué vivieron ellos para que YO estuviera aquí?\n\nTu historia familiar ES historia de México. 💪❤️‍🩹\n\nSígueme para más historia.",
+    "facebook_post": "❤️‍🩹🇲🇽 ¿CONOCES REALMENTE LA HISTORIA DE TUS ABUELOS?\n\nHace poco emprendí un viaje increíble... no en avión, sino a través del tiempo y los documentos históricos para encontrar las raíces de mi familia. 📜✨\n\nY lo que descubrí me dejó sin palabras. 😱\n\n👉 ¿Sabías que durante la Revolución Mexicana (1910-1920), más de 1 MILLÓN de personas murieron y millones más fueron desplazadas de sus hogares?\n\n👉 Muchas familias mexicanas de hoy desconocen que sus abuelos sobrevivieron hambrunas, migraciones forzadas y reconstruyeron todo desde cero.\n\n👉 Los registros civiles de esa época guardan secretos familiares que la mayoría NUNCA ha investigado. 🔍\n\nNuestros abuelitos no solo vivieron historia... FUERON la historia. Cada decisión que tomaron bajo presión extrema nos dio la vida que hoy tenemos. 💪\n\n¿Tú conoces la historia completa de tus abuelos? 👇\n\nComenta **SÍ** si quieres saber más sobre cómo investigar tus raíces históricas familiares. 🇲🇽❤️",
+    "instagram_caption": "❤️‍🩹 Viajé hasta encontrar a mis abuelitos... y lo que descubrí cambió todo. 🇲🇽\n\nNuestros abuelos no eran simples personas del pasado. Sobrevivieron revoluciones, hambrunas y reconstruyeron México con sus propias manos. 💪\n\nDato que nadie te enseñó en la escuela: miles de familias mexicanas perdieron sus apellidos, tierras e historia durante los conflictos del siglo XX. 📜\n\n¿Cuántas historias de tu familia están esperando ser descubiertas? 🔍✨\n\nCuéntame en comentarios qué sabes de tus abuelos 👇\n\n#Historia #HistoriaViral #Cultura #HistoriaMexicana #MéxicoProfundo #RaicesMexicanas #RevolucionMexicana #HistoriaFamiliar #Identidad #Tradicion #MexicoHistorico #Abuelitos #Genealogia #CulturaLatina #HistoriaEnEspanol",
+    "title": "Viajé hasta CONOCER a mis Abuelitos ❤️‍🩹 🇲🇽"
+  }
+}
