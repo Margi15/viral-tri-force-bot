@@ -4,6 +4,14 @@ import urllib.request
 import urllib.parse
 import json
 
+# User-Agent requerido por Wikipedia — sin esto devuelve 403 en servidores
+HEADERS = {
+    "User-Agent": "ViralTriForceBot/1.0 (https://github.com/Margi15/viral-tri-force-bot) python-urllib/3.10"
+}
+
+# Limite de pixeles para evitar decompression bomb en PIL (50 megapixeles)
+MAX_PIXELS = 50_000_000
+
 
 def search_wikipedia(topic, lang="es"):
     """
@@ -27,8 +35,9 @@ def search_wikipedia(topic, lang="es"):
     )
 
     try:
-        req = urllib.request.urlopen(search_url, timeout=10)
-        data = json.loads(req.read())
+        req = urllib.request.Request(search_url, headers=HEADERS)
+        resp = urllib.request.urlopen(req, timeout=10)
+        data = json.loads(resp.read())
         results = data.get("query", {}).get("search", [])
     except Exception as e:
         print(f"  Wikipedia busqueda fallida: {e}")
@@ -49,14 +58,23 @@ def search_wikipedia(topic, lang="es"):
         )
 
         try:
-            req2 = urllib.request.urlopen(summary_url, timeout=10)
-            summary = json.loads(req2.read())
+            req2 = urllib.request.Request(summary_url, headers=HEADERS)
+            resp2 = urllib.request.urlopen(req2, timeout=10)
+            summary = json.loads(resp2.read())
 
-            # Preferir imagen original de alta resolucion
-            image_url = (
-                summary.get("originalimage", {}).get("source")
-                or summary.get("thumbnail", {}).get("source")
-            )
+            # Preferir imagen original, pero solo si no es una bomba de pixeles
+            image_url = None
+            orig = summary.get("originalimage", {})
+            if orig.get("source"):
+                w = orig.get("width", 0)
+                h = orig.get("height", 0)
+                if w * h < MAX_PIXELS:
+                    image_url = orig["source"]
+
+            # Fallback a thumbnail si originalimage es demasiado grande
+            if not image_url:
+                image_url = summary.get("thumbnail", {}).get("source")
+
             extract = summary.get("extract", "")
 
             if not extract:
@@ -95,16 +113,15 @@ def fetch_wikipedia_image(image_url):
     from PIL import Image
 
     try:
-        # Wikipedia requiere User-Agent
-        req = urllib.request.Request(
-            image_url,
-            headers={"User-Agent": "BitacoraDelTiempoBot/1.0 (educational)"},
-        )
+        req = urllib.request.Request(image_url, headers=HEADERS)
         resp = urllib.request.urlopen(req, timeout=15)
         data = resp.read()
         img = Image.open(io.BytesIO(data))
-        # Asegurarse de que es una imagen real (no un SVG o placeholder)
+        # Verificar tamano minimo y maximo
         if img.size[0] < 100 or img.size[1] < 100:
+            return None
+        if img.size[0] * img.size[1] >= MAX_PIXELS:
+            print(f"  Imagen demasiado grande ({img.size[0]}x{img.size[1]}), omitiendo")
             return None
         print(f"  Imagen Wikipedia: {img.size[0]}x{img.size[1]} ({img.mode})")
         return img.convert("RGB")
