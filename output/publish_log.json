@@ -1,10 +1,9 @@
 {
-  "timestamp": "2026-06-25T19:05:36.368012",
+  "timestamp": "2026-07-01T18:59:05.645283",
   "results": {
     "youtube": {
-      "success": true,
-      "video_id": "BVQrWb7RTyA",
-      "url": "https://www.youtube.com/shorts/BVQrWb7RTyA"
+      "success": false,
+      "error": "No YouTube credentials"
     },
     "facebook": {
       "success": false,
@@ -16,9 +15,10 @@
     }
   },
   "content": {
-    "script": "¿Sabías que cada mañana que enciendes la televisión, eres parte de una tradición que lleva más de 30 años? Antena 3 Noticias comenzó a transmitirse en 1990, el mismo año en que la cadena inició sus emisiones regulares. Imagina: mientras el mundo cambiaba radicalmente, caía el Muro de Berlín, surgía internet... ellos ya estaban ahí, informando cada mañana. Lo que hoy parece rutinario fue una revolución en la televisión española privada. El informativo matutino que ves hoy jueves 25 de junio tiene décadas de historia detrás de cada imagen. La información nunca fue la misma después de 1990. Sígueme para más historia.",
-    "facebook_post": "📺🔥 ¡DATO HISTÓRICO QUE TE VA A SORPRENDER!\n\nEsta mañana, jueves 25 de junio, millones de españoles encendieron la televisión para ver las noticias... pero, ¿alguna vez te preguntaste CUÁNDO empezó todo esto? 🤔\n\nAntena 3 Noticias lleva en emisión desde 1990, cuando la cadena dio sus primeros pasos como televisión privada en España. ¡Más de 30 años ininterrumpidos informando cada mañana! 📅\n\n⚡ El dato que pocos conocen: Antena 3 fue pionera en la televisión privada española, rompiendo el monopolio estatal. Cambió para siempre la forma en que los españoles consumían noticias.\n\nAntes de 1990, solo existía la televisión pública. Hoy damos por sentado elegir entre múltiples canales, pero esa libertad informativa tiene una fecha de nacimiento exacta. 🗓️\n\nLa historia está en los detalles que ignoramos a diario. 💡\n\n👇 Comenta SI si quieres saber más sobre la historia de los medios de comunicación en España.",
-    "instagram_caption": "📺 Esta mañana tiene más historia de la que imaginas...\n\nCada vez que sintonizas las noticias, conectas con una tradición que nació en 1990. Antena 3 Noticias lleva más de 30 años en emisión desde el primer día de la cadena, siendo pionera en la televisión privada española. 🇪🇸✨\n\nLo que hoy es rutina, fue una revolución. La información nunca volvió a ser igual. ¿Cuántas historias caben en tres décadas de noticias matutinas? 🔥\n\n#historia #historiaviral #cultura #television #españa #mediosdecomunicacion #antena3 #curiosidades #datoshistoricos #historiaespañola #cultura española #viral",
-    "title": "Las noticias de la mañana, jueves 25 de junio de 2"
+    "script": "¿Sabías que el Miércoles de Ceniza existe desde hace más de MIL años? Hoy, 1 de julio, reflexionamos sobre uno de los rituales más antiguos del cristianismo. Esta tradición marca el inicio de la Cuaresma, cuarenta días de penitencia antes de Pascua. Pero aquí viene lo impactante: la ceniza que se coloca en la frente proviene de quemar los ramos bendecidos del Domingo de Ramos del año anterior. Un ciclo perfecto entre la vida y la muerte. Católicos, luteranos, metodistas, anglicanos y presbiterianos comparten esta práctica milenaria. Una señal visible que ha unido a millones durante siglos. ¿Te habían contado esto antes? Sígueme para más historia.",
+    "facebook_post": "🕯️ ¿Conoces el verdadero origen del Miércoles de Ceniza? 🕯️\n\nUno de los rituales cristianos más fascinantes del mundo tiene un secreto que muy pocos conocen... 👇\n\nLa ceniza que los fieles reciben en su frente NO es cualquier ceniza. ¡Son los ramos bendecidos del año anterior, quemados especialmente para esta ceremonia! 🌿🔥\n\n📜 Este día sagrado tiene más de MIL AÑOS de historia y marca el inicio de la Cuaresma, un período de cuarenta días de reflexión y penitencia antes de Pascua.\n\n💡 Dato revelador: Esta tradición no pertenece solo a los católicos. Luteranos, metodistas, anglicanos, presbiterianos e incluso algunas iglesias bautistas comparten este mismo ritual milenario. ¡Una costumbre que ha unido a millones de personas a través de los siglos y las denominaciones!\n\nLa frase que el sacerdote susurra al trazar la cruz de ceniza viene del Génesis: *\"Eres polvo y al polvo volverás.\"* Una frase con más de 3,000 años de antigüedad. 🤯\n\n👇 Comenta SÍ si quieres saber más sobre los rituales más fascinantes de la historia.",
+    "instagram_caption": "🕯️ La ceniza en tu frente esconde un secreto milenario que nadie te contó...\n\nCada Miércoles de Ceniza, millones de personas reciben la marca de los ramos bendecidos del año anterior, quemados en un ciclo perfecto entre la vida y la muerte. 🌿🔥\n\nEste ritual de más de MIL AÑOS une a católicos, luteranos, metodistas y anglicanos en un mismo símbolo poderoso: *\"Eres polvo y al polvo volverás.\"*\n\nLa historia que creías conocer apenas comienza. ¿Te sorprendió este dato? 👇\n\n#historia #historiaviral #cultura #miercolesdeceniza #cuaresma #tradicion #historiascristianas #datoshistoricos #culturageneral #aprendehistoria #curiosidades #historiareal #religión #tradicionesmilenarias #viral",
+    "title": "Las noticias de la mañana, miércoles 1 de julio de",
+    "wiki_image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Carl_Spitzweg_-_Aschermittwoch.jpg"
   }
 }
